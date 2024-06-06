@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"> 
-    <?php
-    $con = new PDO ("mysql:host=database-epgal.cinrt0cz5hud.us-east-1.rds.amazonaws.com;dbname=parcial", "admin", "epgalcrede17");
-
-    $rs = $con->query("SELECT * FROM afazeres");
-    while($row = $rs->fetch(PDO::FETCH_OBJ)){
-
-        echo '
-        
-        <tr class="border-b">
-          <td class="py-2 px-4 text-sm text-gray-700">Estudar Matemática</td>
-          <td class="py-2 px-4 text-sm text-gray-700">Revisar álgebra linear</td>
-          <td class="py-2 px-4 text-sm text-gray-700">Pendente</td>
-          <td class="py-2 px-4 text-sm text-gray-700">22/05/2024</td>
-    </tr> ';
-}
-
-    ?>
+   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,24 +21,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b">
-                        <td class="py-2 px-4 text-sm text-gray-700">Estudar Matemática</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">Revisar álgebra linear</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">Pendente</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">22/05/2024</td>
-                    </tr>
-                    <tr class="border-b bg-gray-50">
-                        <td class="py-2 px-4 text-sm text-gray-700">Fazer Compras</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">Comprar frutas e verduras</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">Concluído</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">21/05/2024</td>
-                    </tr>
-                    <tr class="border-b">
-                        <td class="py-2 px-4 text-sm text-gray-700">Limpar a Casa</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">Aspirar e passar pano</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">Em Progresso</td>
-                        <td class="py-2 px-4 text-sm text-gray-700">20/05/2024</td>
-                    </tr>
+                <?php
+    $con = new PDO ("mysql:host=database-epgal.cinrt0cz5hud.us-east-1.rds.amazonaws.com;dbname=parcial", "admin", "epgalcrede17");
+
+    $rs = $con->query("SELECT * FROM afazeres");
+    while($row = $rs->fetch(PDO::FETCH_OBJ)){
+
+        echo '
+        
+        <tr class="border-b">
+          <td class="py-2 px-4 text-sm text-gray-700">'.$row->titulo.'</td>
+          <td class="py-2 px-4 text-sm text-gray-700">'.$row->descricao.'</td>
+          <td class="py-2 px-4 text-sm text-gray-700">'.$row->status.'</td>
+          <td class="py-2 px-4 text-sm text-gray-700">22/05/2024</td>
+    </tr> ';
+}
+
+    ?>
                     <!-- Adicione mais linhas conforme necessário -->
                 </tbody>
             </table>
